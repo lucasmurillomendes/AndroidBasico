@@ -6,9 +6,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.recyclerview.R;
+import com.example.recyclerview.activity.RecyclerItemClickListener;
 import com.example.recyclerview.activity.adapter.Adapter;
 import com.example.recyclerview.activity.model.Filme;
 
@@ -41,37 +45,70 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
         recyclerView.setAdapter(adapter);
 
+        //Evento de click na lista
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        getApplicationContext(),
+                        recyclerView,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Filme filme = filmes.get(position); //pega a posição clicada e retorna objeto
+                                Toast.makeText(getApplicationContext(),
+                                        "Item pressionado: " + filme.getTituloFilme(),
+                                        Toast.LENGTH_SHORT
+                                ).show();
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+                                Filme filme = filmes.get(position);//pega a posição clicada e retorna objeto
+                                Toast.makeText(
+                                        getApplicationContext(),
+                                        "Click Longo: " + filme.getTituloFilme(),
+                                        Toast.LENGTH_SHORT
+                                ).show();
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            }
+                        }
+                )
+        );
+
     }
 
     public void criarFilmes(){
         Filme filme = new Filme("Homem Aranha", "Aventura", "2017");
         this.filmes.add(filme);
 
-        Filme filme1 = new Filme("Mulher Maravilha", "Fantasia", "2018");
-        this.filmes.add(filme1);
+        filme = new Filme("Mulher Maravilha", "Fantasia", "2018");
+        this.filmes.add(filme);
 
-        Filme filme2 = new Filme("Liga da Justiça", "Ficção", "2015");
-        this.filmes.add(filme2);
+        filme = new Filme("Liga da Justiça", "Ficção", "2015");
+        this.filmes.add(filme);
 
-        Filme filme3 = new Filme("Capitão América", "Aventura", "2016");
-        this.filmes.add(filme3);
+        filme = new Filme("Capitão América", "Aventura", "2016");
+        this.filmes.add(filme);
 
-        Filme filme4 = new Filme("It: A coisa", "Terror", "2012");
-        this.filmes.add(filme4);
+        filme = new Filme("It: A coisa", "Terror", "2012");
+        this.filmes.add(filme);
 
-        Filme filme5 = new Filme("Pica-Pau: O filme", "Desenho", "2010");
-        this.filmes.add(filme5);
+        filme = new Filme("Pica-Pau: O filme", "Desenho", "2010");
+        this.filmes.add(filme);
 
-        Filme filme6 = new Filme("Bob Esponja: O filme", "Desenho", "2010");
-        this.filmes.add(filme6);
+        filme = new Filme("Bob Esponja: O filme", "Desenho", "2010");
+        this.filmes.add(filme);
 
-        Filme filme7 = new Filme("Tom e Jerry: O filme", "Desenho", "2016");
-        this.filmes.add(filme7);
+        filme = new Filme("Tom e Jerry: O filme", "Desenho", "2016");
+        this.filmes.add(filme);
 
-        Filme filme8 = new Filme("A múmia", "Terror", "2015");
-        this.filmes.add(filme8);
+        filme = new Filme("A múmia", "Terror", "2015");
+        this.filmes.add(filme);
 
-        Filme filme9 = new Filme("Carros 3", "Desenho", "2017");
-        this.filmes.add(filme9);
+        filme = new Filme("Carros 3", "Desenho", "2017");
+        this.filmes.add(filme);
     }
 }
