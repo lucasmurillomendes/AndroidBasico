@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_principal">
+
+    <fragment
+        android:id="@+id/nav_principal"
+        android:name="com.lucas.atmconsultoria.ui.principal.PrincipalFragment"
+        android:label="@string/menu_principal"
+        tools:layout="@layout/fragment_principal" />
+
+    <fragment
+        android:id="@+id/nav_servicos"
+        android:name="com.lucas.atmconsultoria.ui.servicos.ServicoFragment"
+        android:label="@string/menu_servicos"
+        tools:layout="@layout/fragment_servicos" />
+
+    <fragment
+        android:id="@+id/nav_clientes"
+        android:name="com.lucas.atmconsultoria.ui.clientes.ClienteFragment"
+        android:label="@string/menu_clientes"
+        tools:layout="@layout/fragment_clientes" />
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="com.lucas.atmconsultoria.ui.share.ShareFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_send"
+        android:name="com.lucas.atmconsultoria.ui.send.SendFragment"
+        android:label="@string/menu_send"
+        tools:layout="@layout/fragment_send" />
+</navigation>
