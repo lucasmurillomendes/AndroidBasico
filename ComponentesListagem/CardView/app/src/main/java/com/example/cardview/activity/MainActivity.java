@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void prepararPostagem(){
 
-        Postagem p = new Postagem("lucas Murillo", "#tbt dessa viagem linda", R.drawable.imagem1);
+        Postagem p = new Postagem("Lucas Murillo", "#tbt dessa viagem linda", R.drawable.imagem1);
         this.postagens.add(p);
         p = new Postagem("Maria Julia", "Viaje aproveite nosos desontos", R.drawable.imagem2);
         this.postagens.add(p);
