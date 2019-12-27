@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.CadastroActivity"></activity>
+        <activity android:name=".activity.DespesasActivity" android:theme="@style/DespesaTheme"></activity>
+        <activity android:name=".activity.ReceitasActivity" android:theme="@style/ReceitaTheme"/>
+        <activity
+            android:name=".activity.PrincipalActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.CadastroActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity
             android:name=".activity.MainActivity"

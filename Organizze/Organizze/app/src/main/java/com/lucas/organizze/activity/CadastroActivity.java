@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.lucas.organizze.R;
 import com.lucas.organizze.config.ConfiguracaoFirebase;
+import com.lucas.organizze.helper.Base64Custom;
 import com.lucas.organizze.model.Usuario;
 
 public class CadastroActivity extends AppCompatActivity {
@@ -35,8 +36,8 @@ public class CadastroActivity extends AppCompatActivity {
 
 
         editNome = findViewById(R.id.editNome);
-        editEmail = findViewById(R.id.editEmail);
-        editSenha = findViewById(R.id.editSenha);
+        editEmail = findViewById(R.id.editEmailLogin);
+        editSenha = findViewById(R.id.editSenhaLogin);
         buttonCadastrar = findViewById(R.id.buttonCadastrar);
 
         buttonCadastrar.setOnClickListener(new View.OnClickListener() {
@@ -88,9 +89,11 @@ public class CadastroActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(CadastroActivity.this, "Usuário cadastrado com sucesso!",
-                                    Toast.LENGTH_SHORT).show();
+                            String idUsuario = Base64Custom.codigicarBase64(usuario.getEmail());
+                            usuario.setIdUsuario(idUsuario);
+                            usuario.salvar();
+                            finish();
+
                         } else {
                             //tratando possiveis erros do firebase na aplicação na autenticação
                             String excecao = "";
