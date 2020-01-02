@@ -1,6 +1,7 @@
 package com.lucas.organizze.activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -37,6 +38,8 @@ public class DespesasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_despesas);
+
+
 
         campoCategoria = findViewById(R.id.editCategoria);
         campoValor = findViewById(R.id.editValor);
@@ -120,9 +123,7 @@ public class DespesasActivity extends AppCompatActivity {
 
         String emailUsuario = autenticacao.getCurrentUser().getEmail();
         String idUsuario = Base64Custom.codigicarBase64(emailUsuario);
-        DatabaseReference usuarioRef = firebaseRef
-                .child("usuarios")
-                .child(idUsuario);
+        DatabaseReference usuarioRef = firebaseRef.child("usuarios").child(idUsuario);
 
         usuarioRef.addValueEventListener(new ValueEventListener() {
             @Override
